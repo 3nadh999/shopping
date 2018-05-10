@@ -1,0 +1,21 @@
+<%= render 'layouts/header' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @category.gender %>
+</p>
+
+<p>
+  <strong>Price range:</strong>
+  <%= @category.price_range %>
+</p>
+
+<button type="button" class="btn btn-info"><%= link_to 'Edit', edit_category_path(@category) %> </button>
+<button type="button" class="btn btn-info"><%= link_to 'Back', categories_path %></button>

@@ -1,0 +1,12 @@
+
+
+<%= render 'layouts/header' %>
+
+
+<h1>Editing Product</h1>
+
+<%= render 'form', product: @product %>
+
+<button type="button" class="btn btn-info"><%= link_to 'Show', @product %> </button>
+<button type="button" class="btn btn-info"><%= link_to 'Back', products_path %></button>
+<%= render 'layouts/footer' %>

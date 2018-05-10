@@ -1,0 +1,26 @@
+<%= render 'layouts/header' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Manufacture date:</strong>
+  <%= @product.manufacture_date %>
+</p>
+
+<button type="button" class="btn btn-info">
+	<%= link_to 'Edit', edit_product_path(@product) %> 
+</button>
+<button type="button" class="btn btn-info">
+	<%= link_to 'Back', products_path %>
+</button>
+<%= render 'layouts/footer' %>

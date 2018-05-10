@@ -1,0 +1,59 @@
+ 
+<%= render 'layouts/header' %>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+ $('.datatable').DataTable({
+  // ajax: ...,
+     autoWidth: false
+  // pagingType: 'full_numbers',
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
+});
+});
+</script>
+
+
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+<table class="datatable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Price range</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr class="success">
+        <td><%= category.name %></td>
+        <td><%= category.gender %></td>
+        <td><%= category.price_range %></td>
+       <td>
+            <button type="button" class="btn btn-info"><%= link_to 'Show', category_path(category) %></button>
+
+            <button type="button" class="btn btn-info"><%= link_to 'Edit', edit_category_path(category) %></button>
+        
+            <button type="button" class="btn btn-danger"><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>
