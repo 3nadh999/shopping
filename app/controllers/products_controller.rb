@@ -16,6 +16,17 @@ class ProductsController < ApplicationController
       #@products = Product.all
     end
 
+    respond_to do |format|
+       
+      format.html 
+      format.pdf  do
+        pdf = ProductPdf.new
+        send_data pdf.render,filename:"product_pdf.pdf" ,
+                              type:"application/pdf",
+                              disposition:"inline"
+      end
+    end
+
   end
 
   # GET /products/1
