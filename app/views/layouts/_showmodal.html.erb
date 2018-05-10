@@ -4,12 +4,14 @@
                <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
+                      <h3>Product</h3>
                       <button class="close" data-dismiss ="modal">
                         &times;
                       </button>
                   </div>
                   <div class="modal-body">
                     <p>
+
                        <strong>Name:</strong>
                       <%= @product.name %>
                     </p>
@@ -23,6 +25,12 @@
                       <strong>Manufacture date:</strong>
                       <%= @product.manufacture_date %>
                     </p>
+
+                    <p>
+                      <strong>Manufacture date:</strong>
+                     <%= image_tag(@product.avatar) %>
+                    </p>
+
 
                     <button type="button" class="btn btn-info">
                         <%= link_to 'Edit', edit_product_path(@product) %> 
