@@ -5,19 +5,21 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     
-    
-     # @products = Product.paginate(:page => params[:page], :per_page => 2)
-      
+    @products=Product.all
+     # @products = Product.paginate(:page => params[:page], :per_page => 2)     
     if params[:search]!="" 
         @products = Product.paginate(:page => params[:page], :per_page => 2).where("name LIKE ? OR price LIKE ? " , "%#{params[:search]}%", "%#{params[:search]}%")
         #@products=Product.where("name LIKE ?  " , "%#{params[:search]}%")  
     else
+
       @products = Product.paginate(:page => params[:page], :per_page => 2)
       #@products = Product.all
-    end
+   end
 
     respond_to do |format|
-       
+      
+      @products = Product.paginate(:page => params[:page], :per_page => 2)
+      
       format.html 
       format.pdf  do
         pdf = ProductPdf.new
