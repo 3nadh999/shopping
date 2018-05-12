@@ -1,13 +1,13 @@
- 
-<%= render 'layouts/header' %>
-
-
-
 <script type="text/javascript">
-$(document).ready(function() {
- $('.datatable').DataTable({
+  $(document).ready(function() {
+ $('#datatable').DataTable({
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    dom: 'Bfltip',
+    buttons: [
+        'copy', 'csv', 'excel', 'pdf'
+    ]
   // ajax: ...,
-     autoWidth: false
+  // autoWidth: false
   // pagingType: 'full_numbers',
   // processing: true,
   // serverSide: true,
@@ -18,16 +18,9 @@ $(document).ready(function() {
 });
 });
 </script>
-
-
-
-
-
-
+<%= render 'layouts/header' %>
 <p id="notice"><%= notice %></p>
-
-
-<table class="datatable">
+<table id="datatable">
   <thead>
     <tr>
       <th>Name</th>
@@ -36,7 +29,6 @@ $(document).ready(function() {
       <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
     <% @categories.each do |category| %>
       <tr class="success">
@@ -53,7 +45,5 @@ $(document).ready(function() {
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Category', new_category_path %>
