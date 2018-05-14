@@ -5,10 +5,13 @@
 <h1>Products</h1> 
 
 <span>
+
+
  <%= form_tag  products_path , method:'GET' do %>
     <%= text_field_tag "search" %>
     <%= submit_tag "search" %>
   <% end %>
+  
   
 </span> 
 
@@ -25,6 +28,9 @@
 
   <tbody>
     <% @products.each do |product| %>
+      <% @product = product %>
+
+
       <tr>
         <td><%= product.name %></td>
         <td><%= product.price %></td>
@@ -41,7 +47,7 @@
         <td>
            <button class="btn btn-primary " data-target="#editmodal" data-toggle = "modal"> edit </button>
 
-            <% @product = product %>
+           
             <%= render 'layouts/editmodal' %>
         </td>
         <td><button type="button" class="btn btn-danger"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>

@@ -5,9 +5,11 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     
+     #@q = Product.ransack(params[:q])
+     #@products = @q.result.includes(:users).page(params[:page])
+
     
-     # @products = Product.paginate(:page => params[:page], :per_page => 2)
-      
+       
     if params[:search]!="" 
         @products = Product.paginate(:page => params[:page], :per_page => 2).where("name LIKE ? OR price LIKE ? " , "%#{params[:search]}%", "%#{params[:search]}%")
         #@products=Product.where("name LIKE ?  " , "%#{params[:search]}%")  
@@ -15,7 +17,7 @@ class ProductsController < ApplicationController
       @products = Product.paginate(:page => params[:page], :per_page => 2)
       #@products = Product.all
     end
-
+   
   end
 
   # GET /products/1
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        ProductMailer.product_email(@product,current_user).deliver_now
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -83,6 +86,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :manufacture_date)
+      params.require(:product).permit(:name, :price, :manufacture_date,:avatar)
     end
 end

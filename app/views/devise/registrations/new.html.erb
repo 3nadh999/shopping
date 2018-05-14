@@ -4,8 +4,36 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :fname, autofocus: true, autocomplete: "fname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :lname, autofocus: true, autocomplete: "lname" %>
+  </div>
+
+  <div class="field">
+     <%= f.label :gender %> 
+    <%= f.radio_button :gender, 'male' %> male
+    <%= f.radio_button :gender, 'female' %> female
+    
+</div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="field">

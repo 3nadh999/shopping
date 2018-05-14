@@ -22,8 +22,11 @@
        <!-- </span> Login -->
        <li>
           <% if user_signed_in? %>
-              <li><%= link_to "logout", destroy_user_session_path,method: "delete"  %></li>
-              <li> <%= link_to "Hi #{current_user.email[/[^@]+/]}" , '#' %></li>
+             
+              <li> <%= link_to "Hi  #{current_user.fname} #{current_user.lname} " , '#' %>
+                  </li>
+              <li><%= image_tag "#{current_user.avatar}" , width:40 ,height:40%></li>
+               <li><%= link_to "logout", destroy_user_session_path,method: "delete"  %></li>    
             <% else %>
               <li><%= link_to "login", new_user_session_path %></li>
             <% end %>
