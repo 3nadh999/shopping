@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: myapp
-  username: trinadh
-  password: trinadh.123
+  database: myapp_production
+  username: myapp
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
